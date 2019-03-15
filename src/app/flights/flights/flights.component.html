@@ -1,3 +1,7 @@
-<p>
-  flights works!
-</p>
+<div class="row flights-container">
+  <div class="col-sm-4" *ngFor="let flight of this.flights$ | async">
+    <app-flight-card [flightInput]="flight"></app-flight-card>
+  </div>
+</div>
+
+<button mat-fab color="accent" id="new-flight-button" (click)="openNewFlightModal()">+</button>
