@@ -1,43 +1,75 @@
-<form>
+<form [formGroup]="this.form">
   <div class="row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput placeholder="Kod lotu" >
+        <input matInput formControlName="code" placeholder="Kod lotu" >
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Miejsce startu" >
+        <input matInput formControlName="origin" placeholder="Miejsce startu" >
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Miejsce docelowe" >
+        <input matInput formControlName="destination" placeholder="Miejsce docelowe" >
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Godzina odlotu" >
+        <input matInput formControlName="departureTime" placeholder="Godzina odlotu" >
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
-        <input matInput placeholder="Godzina przylotu" >
+        <input matInput formControlName="returnTime" placeholder="Godzina przylotu" >
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <textarea matInput placeholder="Dodatkowe informacje"></textarea>
+      <textarea matInput formControlName="additionalInformation" placeholder="Dodatkowe informacje"></textarea>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <mat-checkbox>Z obnizką</mat-checkbox>
+      <mat-checkbox formControlName="withSKPlanesDiscount">Z obnizką</mat-checkbox>
+    </div>
+  </div>
+
+  <div formArrayName="crew" class="crew-container shadow" *ngFor="let crewMember of this.crew.controls; index as index">
+    <div class="row crew-header">
+      <div class="col">
+        <span>Załogant - {{ index + 1 }}</span>
+        <mat-icon class="float-right" (click)="this.removeCrewMember(index)">delete_forever</mat-icon>
+      </div>
+    </div>
+    <div class="row" [formGroupName]="index">
+      <div class="col-sm-5">
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Nazwisko załoganta">
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field >
+          <mat-select formControlName="job" placeholder="Wybierz typ zawodu">
+            <mat-option  *ngFor="let job of this.jobs; let j" [value]="job.value">{{ job.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="this.addCrewMember()">Dodaj załoganta</button>
     </div>
   </div>
 </form>
+
+<pre>
+  {{this.form.value | json}}
+</pre>
