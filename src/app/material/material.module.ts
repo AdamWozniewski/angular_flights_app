@@ -1,11 +1,4 @@
 import { NgModule } from '@angular/core';
-
-const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
-  disableClose: true,
-  width: '700px',
-  hasBackdrop: true,
-}
-
 import {
   MatIconModule,
   MatCardModule,
@@ -19,7 +12,21 @@ import {
   MatToolbarModule,
   MatDialogConfig,
   MAT_DIALOG_DEFAULT_OPTIONS,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarConfig,
 } from '@angular/material';
+
+
+const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
+  disableClose: true,
+  width: '700px',
+  hasBackdrop: true,
+}
+
+const MAT_SNACK_BAR_GLOBAL_CONFIG: MatSnackBarConfig = {
+  duration: 2500,
+  horizontalPosition: 'center',
+}
 
 const MATERIAL_MODULES = [
   MatIconModule,
@@ -40,6 +47,10 @@ const MATERIAL_MODULES = [
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: MAT_DIALOG_GLOBAL_CONFIG,
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: MAT_SNACK_BAR_GLOBAL_CONFIG,
     },
   ]
 })

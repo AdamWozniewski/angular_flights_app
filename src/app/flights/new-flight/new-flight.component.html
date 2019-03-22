@@ -1,12 +1,12 @@
 <h2 mat-dialog-title>Utwórz nowy lot</h2>
 <mat-dialog-content>
-  <app-flight-form></app-flight-form>
+  <app-flight-form #flightForm></app-flight-form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="row">
     <div class="col">
       <button mat-raised-button mat-dialog-close>Anuluj</button>
-      <button mat-raised-button color="primary">Dodaj</button>
+      <button mat-raised-button color="primary" [disabled]="this.flightForm.form.invalid" (click)="this.createFlight()">Dodaj</button>
     </div>
   </div>
 </mat-dialog-actions>

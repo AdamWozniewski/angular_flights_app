@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-sm-8">
       <mat-form-field>
-        <input matInput formControlName="code" placeholder="Kod lotu" >
+        <input matInput formControlName="code" placeholder="Kod lotu" #codeInput>
+        <mat-error *ngIf="this.form.get('code').hasError('required')">Pole wymagane</mat-error>
+        <mat-error *ngIf="this.form.get('code').hasError('minlength')">Minimalna ilość znaków to 4</mat-error>
+        <mat-error *ngIf="this.form.get('code').hasError('maxlength')">Maksymalna ilość znaków to 7</mat-error>
+        <mat-hint align="end">{{ codeInput.value.length }} / 7</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -10,11 +14,13 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="origin" placeholder="Miejsce startu" >
+        <mat-error *ngIf="this.form.get('origin').hasError('required')">Pole wymagane</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="destination" placeholder="Miejsce docelowe" >
+        <mat-error *ngIf="this.form.get('destination').hasError('required')">Pole wymagane</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -22,11 +28,13 @@
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="departureTime" placeholder="Godzina odlotu" >
+        <mat-error *ngIf="this.form.get('departureTime').hasError('required')">Pole wymagane</mat-error>
       </mat-form-field>
     </div>
     <div class="col-sm-4">
       <mat-form-field>
         <input matInput formControlName="returnTime" placeholder="Godzina przylotu" >
+        <mat-error *ngIf="this.form.get('returnTime').hasError('required')">Pole wymagane</mat-error>
       </mat-form-field>
     </div>
   </div>
