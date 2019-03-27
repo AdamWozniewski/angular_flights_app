@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-9">
+    <h3>Edytuj lot: <strong>{{ this.flight?.code }}</strong></h3>
+  </div>
+  <div class="col-3">
+    <mat-icon (click)="this.removeFlight()" id="remove-flight">DELETE_FOREVER</mat-icon>
+  </div>
+</div>
+<app-flight-form #flightForm [editMode]="true"></app-flight-form>
+<div class="row">
+  <div class="col text-right">
+    <button mat-raised-button>RESET</button>
+    <button mat-raised-button color="primary" (click)="this.editFlight()">Zapisz</button>
+  </div>
+</div>

@@ -24,4 +24,18 @@ export class FlightsService {
   private assignKey(flight) {
     return {...flight.payload.val(), key: flight.key};
   }
+
+  getFlight(id: string): Observable<Flight> {
+    return this.db.object<Flight>(`${this.API_URL}/${id}`)
+      .snapshotChanges()
+      .pipe(map(flight => this.assignKey(flight)));
+  }
+
+  editFlight(key: string, flight: Flight) {
+    return this.db.object<Flight>(`${this.API_URL}/${key}`).update(flight);
+  }
+
+  deleteFlight(key: string) {
+    return this.db.object<Flight>(`${this.API_URL}/${key}`).remove();
+  }
 }

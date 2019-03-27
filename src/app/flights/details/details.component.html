@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col">
+    <h3>Informacje o locie <mat-icon class="float-right" (click)="this.closeDialog()">close</mat-icon></h3>
+    <p class="label">Kod: {{ this.flight.code }}</p>
+    <p class="label">Crew: </p>
+    <ul>
+      <li *ngFor="let member of this.flight.crew">
+        {{ member.name }}
+      </li>
+    </ul>
+    <button mat-rised-button color="primary" class="float-right" (click)="this.gotToEditFlight()">Edytuj lot</button>
+  </div>
+</div>

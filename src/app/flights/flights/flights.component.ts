@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Flight } from 'src/app/core/models/Flight';
 import { MatDialog } from '@angular/material';
 import { NewFlightComponent } from './../new-flight/new-flight.component';
+import { DetailsComponent } from '../details/details.component';
 
 @Component({
   selector: 'app-flights',
@@ -19,5 +20,10 @@ export class FlightsComponent {
 
   openNewFlightModal() {
     this.dialog.open(NewFlightComponent); // przekazanie jaki komponent ma zadzialac
+  }
+  openShowDetails(flight) {
+    this.dialog.open(DetailsComponent, {
+      data: flight,
+    });
   }
 }
