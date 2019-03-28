@@ -5,9 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
+import { WildcardComponent } from './wildcard/wildcard.component';
 
 @NgModule({
-  declarations: [DashboardComponent, LoginComponent],
+  declarations: [DashboardComponent, LoginComponent, WildcardComponent],
 
   imports: [
     FormsModule,

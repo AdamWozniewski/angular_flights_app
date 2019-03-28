@@ -8,15 +8,17 @@ import { FlightFormComponent } from './flight-form/flight-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { EditFlightComponent } from './edit-flight/edit-flight.component';
+import { FlightsRoutingModule } from './flights-routing.module';
 
 @NgModule({
   declarations: [FlightsComponent, FlightCardComponent, NewFlightComponent, FlightFormComponent, DetailsComponent, EditFlightComponent],
   imports: [
     CommonModule,
     MaterialModule,
+    FlightsRoutingModule,
 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   entryComponents: [ // komponenty dynamiczne
     NewFlightComponent, 

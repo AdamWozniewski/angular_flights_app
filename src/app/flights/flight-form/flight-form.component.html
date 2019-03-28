@@ -6,6 +6,7 @@
         <mat-error *ngIf="this.form.get('code').hasError('required')">Pole wymagane</mat-error>
         <mat-error *ngIf="this.form.get('code').hasError('minlength')">Minimalna ilość znaków to 4</mat-error>
         <mat-error *ngIf="this.form.get('code').hasError('maxlength')">Maksymalna ilość znaków to 7</mat-error>
+        <mat-error *ngIf="this.form.get('code').hasError('incorrectCode')">Kod lotu nie zaczyka się na 'SK-'</mat-error>
         <mat-hint align="end">{{ codeInput.value.length }} / 7</mat-hint>
       </mat-form-field>
     </div>

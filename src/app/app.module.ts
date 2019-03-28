@@ -11,7 +11,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
-import { FlightsModule } from './flights/flights.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import { FlightsModule } from './flights/flights.module';
     // nasze moduły
     CoreModule,
     MaterialModule,
-    FlightsModule,
+    // FlightsModule, FlightsModule jest importowany na zadanie
   ],
   providers: [],
   bootstrap: [AppComponent]

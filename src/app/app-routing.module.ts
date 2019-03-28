@@ -4,6 +4,8 @@ import { LoginComponent } from './core/login/login.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { FlightsComponent } from './flights/flights/flights.component';
 import { EditFlightComponent } from './flights/edit-flight/edit-flight.component';
+import { AuthGuard } from './core/services/auth.guard';
+import { WildcardComponent } from './core/wildcard/wildcard.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: <any> DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -26,14 +29,14 @@ const routes: Routes = [
       },
       {
         path: 'flights',
-        component: <any> FlightsComponent,
-      },
-      {
-        path: 'flights/:key',
-        component: <any> EditFlightComponent,
+        loadChildren: './flights/flights.module#FlightsModule',
       },
     ]
   },
+  {
+    path: '**',
+    component: <any> WildcardComponent,
+  }
 ];
 
 @NgModule({
